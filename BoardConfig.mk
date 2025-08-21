@@ -23,8 +23,26 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
-# SDK
-BOARD_SYSTEMSDK_VERSIONS := 34
+DEVICE_PATH := device/motorola/malmo
+
+# For building with minimal manifest
+ALLOW_MISSING_DEPENDENCIES := true
+
+# A/B
+AB_OTA_UPDATER := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
+AB_OTA_PARTITIONS += \
+    boot \
+    dtbo \
+    product \
+    system \
+    system_ext \
+    recovery \
+    vbmeta \
+    vbmeta_system \
+    vendor \
+    vendor_dlkm \
+    vendor_boot
 
 # Architecture
 TARGET_ARCH := arm64
@@ -52,6 +70,9 @@ BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_KERNEL_CONFIG := malmo_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/malmo
 TARGET_NO_KERNEL_OVERRIDE := true
+
+#Support to compile recovery without msm headers
+TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
 # Platform
 TARGET_BOARD_PLATFORM := blair
@@ -98,11 +119,7 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Rules
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-BUILD_BROKEN_NINJA_USES_ENV_VARS += RTIC_MPGEN
-
 BUILD_BROKEN_USES_BUILD_HOST_SHARED_LIBRARY := true
-BUILD_BROKEN_USES_BUILD_HOST_STATIC_LIBRARY := true
-BUILD_BROKEN_USES_BUILD_HOST_EXECUTABLE := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 # Recovery
