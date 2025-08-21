@@ -55,6 +55,12 @@ PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.1-impl-mock
 
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bootimage.build.date.utc=0 \
+    ro.recoveryimage.build.date.utc=0 \
+    ro.build.date.utc=1755805279
+
 # Take a few libraries from sources
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hidl.allocator@1.0 \
