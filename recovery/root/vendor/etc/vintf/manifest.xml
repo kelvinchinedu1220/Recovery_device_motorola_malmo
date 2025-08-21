@@ -1,7 +1,8 @@
 <!--
     Input:
-        device/qcom/blair/manifest_blair.xml
-        device/moto/malmo/manifest_malmo.xml
+        manifest_blair.xml
+        manifest_malmo.xml
+        manifest_holi.xml
 -->
 <manifest version="7.0" type="device" target-level="8">
     <hal format="hidl">
