@@ -88,3 +88,6 @@ TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 #Support to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+
+# Enable Fuse Passthrough
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
