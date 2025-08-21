@@ -55,12 +55,6 @@ PRODUCT_PACKAGES += \
     fastbootd \
     android.hardware.fastboot@1.1-impl-mock
 
-# HACK: Set vendor patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bootimage.build.date.utc=0 \
-    ro.recoveryimage.build.date.utc=0 \
-    ro.build.date.utc=1755805279
-
 # Take a few libraries from sources
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hidl.allocator@1.0 \
@@ -94,3 +88,6 @@ TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 #Support to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
+
+# Copy modules for depmod
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*.ko,$(LOCAL_PATH)/prebuilt,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules/)
