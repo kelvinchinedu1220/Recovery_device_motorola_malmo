@@ -34,17 +34,19 @@ AB_OTA_UPDATER := true
 LOCAL_PATH := device/motorola/malmo
 
 # A/B
+AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     product \
     system \
     system_ext \
-    vendor \
-    vendor_boot \
+    recovery \
     vbmeta \
     vbmeta_system \
-    recovery 
+    vendor \
+    vendor_dlkm \
+    vendor_boot
     
 PRODUCT_PACKAGES += \
     otapreopt_script \
