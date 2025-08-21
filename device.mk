@@ -50,12 +50,6 @@ PRODUCT_PACKAGES += \
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# F2FS utilities
-PRODUCT_PACKAGES += \
-    sg_write_buffer \
-    f2fs_io \
-    check_f2fs
-
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd \
@@ -65,10 +59,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bootimage.build.date.utc=0 \
     ro.build.date.utc=0
-
-# OEM otacert
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/ota
 
 # Take a few libraries from sources
 TARGET_RECOVERY_DEVICE_MODULES += \
