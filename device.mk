@@ -75,7 +75,6 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 
 # Take a few libraries from sources
 TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.vibrator-V2-ndk_platform.so \
     android.hidl.allocator@1.0 \
     android.hidl.memory@1.0 \
     android.hidl.memory.token@1.0 \
@@ -89,7 +88,6 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libdisplayconfig.qti
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V2-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.allocator@1.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory@1.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hidl.memory.token@1.0.so \
@@ -102,10 +100,9 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/vendor.display.config@2.0.so \
     $(TARGET_OUT_SYSTEM_EXT_SHARED_LIBRARIES)/libdisplayconfig.qti.so
 
-# Namespace definition for librecovery_updater
-SOONG_CONFIG_NAMESPACES += ufsbsg
-SOONG_CONFIG_ufsbsg += ufsframework
-SOONG_CONFIG_ufsbsg_ufsframework := bsg
+# Load modules for touch 
+TW_LOAD_VENDOR_MODULES := "adsp_loader_dlkm.ko"
+TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 #Support to compile recovery without msm headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
